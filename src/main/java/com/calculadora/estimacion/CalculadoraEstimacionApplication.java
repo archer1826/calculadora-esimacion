@@ -8,6 +8,7 @@ public class CalculadoraEstimacionApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CalculadoraEstimacionApplication.class, args);
+		System.out.println("Prueba ejecución automatica en Jenkis");
 	}
 
 }
