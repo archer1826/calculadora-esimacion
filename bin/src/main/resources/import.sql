@@ -1,0 +1,1 @@
+insert into saludo values (default, "hola profe")
