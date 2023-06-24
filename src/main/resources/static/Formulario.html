@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Formulario de Fábrica</title>
+   
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #910707;
+            margin-left: 120px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #2E4053;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #2E4053;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #910707;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0A0A0A;
+        }
+        
+        input[type="button"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #910707;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0A0A0A;
+        }
+        </style> 
+</head>
+<body>
+    <h1>Formulario de Fábrica</h1>
+    <form action="/fabricas" method="POST">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required><br>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required><br>
+
+        <label for="gerente">Gerente:</label>
+        <input type="text" id="gerente" name="gerente" required><br>
+
+        <label for="emailContact">Email de contacto:</label>
+        <input type="email" id="emailContact" name="emailContact" required><br>
+
+        <input type="submit" value="Guardar">
+        
+        <input type="button" value="Eliminar" id="eliminarBtn" onclick="eliminarFabrica()">
+        
+               
+    </form>
+    <script>
+    function eliminarFabrica() {
+        var confirmacion = confirm("¿Estás seguro de que deseas eliminar esta fábrica?");
+        if (confirmacion) {
+            // Obtener el valor del campo DNI
+            var dni = document.getElementById("dni").value;
+
+            // Construir la URL de la solicitud de eliminación
+            var url = "/fabricas/" + dni;
+
+            // Realizar la solicitud de eliminación utilizando AJAX o Fetch API
+            fetch(url, {
+                method: "DELETE"
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    alert("La fábrica ha sido eliminada exitosamente.");
+                    location.reload(); // Recargar la página para actualizar la lista de fábricas
+                } else {
+                    alert("Tiempo de eliminación prolongado, efectuado.");
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+                alert("Tiempo de eliminación prolongado, efectuado.");
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
