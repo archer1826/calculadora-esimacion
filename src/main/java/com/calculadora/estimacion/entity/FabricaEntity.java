@@ -10,8 +10,7 @@ import jakarta.persistence.Id;
 public class FabricaEntity {
 
     @Id    
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)   
     @Column(length = 3)
     private int dni;
     @Column(length = 30)
